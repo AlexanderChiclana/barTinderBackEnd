@@ -10,10 +10,42 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2) do
+ActiveRecord::Schema.define(version: 20180820005040) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "drinks", force: :cascade do |t|
+    t.bigint "user_id"
+    t.integer "idDrink"
+    t.string "strDrink"
+    t.string "strGlass"
+    t.string "strInstructions"
+    t.string "strDrinkThumb"
+    t.string "strIngredient1"
+    t.string "strIngredient2"
+    t.string "strIngredient3"
+    t.string "strIngredient4"
+    t.string "strIngredient5"
+    t.string "strIngredient6"
+    t.string "strIngredient7"
+    t.string "strIngredient8"
+    t.string "strIngredient9"
+    t.string "strIngredient10"
+    t.string "strMeasure1"
+    t.string "strMeasure2"
+    t.string "strMeasure3"
+    t.string "strMeasure4"
+    t.string "strMeasure5"
+    t.string "strMeasure6"
+    t.string "strMeasure7"
+    t.string "strMeasure8"
+    t.string "strMeasure9"
+    t.string "strMeasure10"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_drinks_on_user_id"
+  end
 
   create_table "examples", force: :cascade do |t|
     t.text "text", null: false
@@ -33,5 +65,6 @@ ActiveRecord::Schema.define(version: 2) do
     t.index ["token"], name: "index_users_on_token", unique: true
   end
 
+  add_foreign_key "drinks", "users"
   add_foreign_key "examples", "users"
 end
