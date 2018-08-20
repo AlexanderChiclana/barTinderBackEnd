@@ -3,7 +3,8 @@ class DrinksController < ProtectedController
 
   # GET /drinks
   def index
-    @drinks = Drink.all
+    # @drinks = Drink.all
+    @drinks = current_user.drinks.all
 
     render json: @drinks
   end
