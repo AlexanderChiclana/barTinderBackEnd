@@ -1,4 +1,4 @@
-class DrinksController < ApplicationController
+class DrinksController < ProtectedController
   before_action :set_drink, only: [:show, :update, :destroy]
 
   # GET /drinks
@@ -15,7 +15,8 @@ class DrinksController < ApplicationController
 
   # POST /drinks
   def create
-    @drink = Drink.new(drink_params)
+    # @drink = Drink.new(drink_params)
+    @drink = current_user.drinks.new(drink_params)
 
     if @drink.save
       render json: @drink, status: :created, location: @drink
@@ -46,6 +47,6 @@ class DrinksController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def drink_params
-      params.require(:drink).permit(:user_id, :idDrink, :strDrink, :strGlass, :strInstructions, :strDrinkThumb, :strIngredient1, :strIngredient2, :strIngredient3, :strIngredient4, :strIngredient5, :strIngredient6, :strIngredient7, :strIngredient8, :strIngredient9, :strIngredient10, :strMeasure1, :strMeasure2, :strMeasure3, :strMeasure4, :strMeasure5, :strMeasure6, :strMeasure7, :strMeasure8, :strMeasure9, :strMeasure10)
+      params.require(:drink).permit(:idDrink, :strDrink, :strGlass, :strInstructions, :strDrinkThumb, :strIngredient1, :strIngredient2, :strIngredient3, :strIngredient4, :strIngredient5, :strIngredient6, :strIngredient7, :strIngredient8, :strIngredient9, :strIngredient10, :strMeasure1, :strMeasure2, :strMeasure3, :strMeasure4, :strMeasure5, :strMeasure6, :strMeasure7, :strMeasure8, :strMeasure9, :strMeasure10)
     end
 end
