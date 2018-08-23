@@ -1,4 +1,4 @@
 class Drink < ApplicationRecord
-  default_scope { order('id ASC') }
+  default_scope { order('id DESC') }
   belongs_to :user
 end
